@@ -1,5 +1,0 @@
-streamlit==1.29.0
-openpyxl==3.1.2
-pandas==2.2.2
-pyarrow
-xlsxwriter
