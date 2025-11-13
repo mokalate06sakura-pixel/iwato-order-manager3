@@ -1,3 +1,17 @@
+import streamlit as st
+from openpyxl import load_workbook
+import io
+
+st.title("Excelファイルアップロード＆内容表示")
+
+uploaded_file = st.file_uploader("Excelファイルをアップロード", type=["xlsx"])
+if uploaded_file is not None:
+    wb = load_workbook(io.BytesIO(uploaded_file.read()))
+    st.success("ファイルの読み込みに成功しました")
+    # 例: 一番左上のセルA1の値を表示
+    sheet = wb.active
+    value = sheet['A1'].value
+    st.write("A1セルの値:", value)
 import io
 import zipfile
 import datetime
@@ -336,3 +350,4 @@ with st.expander("STEP 2：仕入先別 注文書を作成（ZIP）", expanded=T
             )
         except Exception as e:
             st.error(f"作成中にエラー：{e}")
+
